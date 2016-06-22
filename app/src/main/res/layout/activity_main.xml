@@ -199,7 +199,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button7"
-        android:onClick="addNumber"
+        android:onClick="calculate"
         android:text="=" />
 
     <Button

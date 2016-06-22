@@ -2,6 +2,7 @@ package com.example.dennis.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
     Button divided;
     Button equals;
     Button dot;
-    String tempString;
-    Float tempNumber;
+    String tempString = "";
+    Float awnser = 0f;
+    String[] splitString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,86 +66,142 @@ public class MainActivity extends AppCompatActivity {
     }
     }
 
-
+    public void calculate(View v)
+    {
+        switch (v.getId()){
+            case R.id.button18:
+                if(tempString.contains("+")) {
+                    splitString = tempString.split("\\+");
+                     awnser = Float.parseFloat(splitString[0]) + Float.parseFloat(splitString[1]);
+                    e.setText("" + awnser);
+                }
+                if(tempString.contains("-")){
+                    splitString = tempString.split("\\-");
+                     awnser = Float.parseFloat(splitString[0])-Float.parseFloat(splitString[1]);
+                    e.setText(""+awnser);
+                }
+                if(tempString.contains("*")){
+                    splitString = tempString.split("\\*");
+                     awnser = Float.parseFloat(splitString[0])*Float.parseFloat(splitString[1]);
+                    e.setText(""+awnser);
+                }
+                if(tempString.contains("/")){
+                    splitString = tempString.split("/");
+                     awnser = Float.parseFloat(splitString[0])/Float.parseFloat(splitString[1]);
+                    e.setText(""+awnser);
+                }
+                break;
+        }
+    }
 
     public void addNumber(View v) {
     switch (v.getId())
     {
         case R.id.button14:
-            if(e.getText().equals("")){
-                e.setText(one.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(one.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+one.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button15:
-            if(e.getText().equals("")){
-                e.setText(two.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(two.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+two.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button16:
-            if(e.getText().equals("")){
-                e.setText(three.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(three.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                 tempString = (""+e.getText()) + (""+three.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button11:
-            if(e.getText().equals("")){
-                e.setText(four.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(four.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+four.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button12:
-            if(e.getText().equals("")){
-                e.setText(five.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(five.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+five.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button13:
-            if(e.getText().equals("")){
-                e.setText(six.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(six.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+six.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button8:
-            if(e.getText().equals("")){
-                e.setText(seven.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(seven.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+seven.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button9:
-            if(e.getText().equals("")){
-                e.setText(eight.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(eight.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+eight.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button10:
-            if(e.getText().equals("")){
-                e.setText(nine.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(nine.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+nine.getText());
                 e.setText(tempString);
             }
             break;
         case R.id.button17:
-            if(e.getText().equals("")){
-                e.setText(nul.getText());}
+            if(e.getText().equals("")||(awnser!=0f)){
+                e.setText(nul.getText());
+                tempString = ""+e.getText();
+                awnser = 0f;
+            }
             else{
                  tempString = (""+e.getText()) + (""+nul.getText());
                 e.setText(tempString);
@@ -152,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clearEntry(View v) {
+        tempString = "";
         e.setText("");
     }
 
