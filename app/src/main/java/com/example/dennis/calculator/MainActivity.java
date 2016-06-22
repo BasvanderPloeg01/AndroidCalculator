@@ -41,29 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void operatorFunction(View v){
-       // tempNumber = Float.parseFloat((tempString));
-    switch (v.getId()){
-        case R.id.button4:
-            tempString = tempString + "+";
-            e.setText(tempString);
-            break;
-        case R.id.button5:
-            tempString = tempString+ "-";
-            e.setText(tempString);
-            break;
-        case R.id.button6:
-            tempString = tempString+ "*";
-            e.setText(tempString);
-            break;
-        case R.id.button7:
-            tempString = tempString+ "/";
-            e.setText(tempString);
-            break;
-        case R.id.button19:
-            tempString = tempString+ ".";
-            e.setText(tempString);
-            break;
-    }
+       Button btn = (Button) v;
+        tempString = tempString + btn.getText();
+        e.setText(tempString);
     }
 
     public void calculate(View v)
@@ -95,120 +75,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNumber(View v) {
-    switch (v.getId())
-    {
-        case R.id.button14:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(one.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+one.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button15:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(two.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+two.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button16:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(three.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                tempString = (""+e.getText()) + (""+three.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button11:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(four.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+four.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button12:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(five.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+five.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button13:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(six.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+six.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button8:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(seven.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+seven.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button9:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(eight.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+eight.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button10:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(nine.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+nine.getText());
-                e.setText(tempString);
-            }
-            break;
-        case R.id.button17:
-            if(e.getText().equals("")||(awnser!=0f)){
-                e.setText(nul.getText());
-                tempString = ""+e.getText();
-                awnser = 0f;
-            }
-            else{
-                 tempString = (""+e.getText()) + (""+nul.getText());
-                e.setText(tempString);
-            }
-            break;
+        Button btn = (Button) v;
+        if(e.getText().equals("")||(awnser!=0f))
+        {
+            e.setText(btn.getText());
+            tempString = ""+e.getText();
+            awnser = 0f;
+        }else{
+            tempString = (""+e.getText()) + (""+btn.getText());
+            e.setText(tempString);
+        }
     }
-    }
+
 
     public void clearEntry(View v) {
         tempString = "";
