@@ -3,77 +3,42 @@ package com.example.dennis.calculator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     EditText e;
     String tempString = "";
     Float awnser = 0f;
+    Calculator c;
     String[] splitString;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         e = (EditText) findViewById(R.id.editText);
+        c = new Calculator(e, tempString, splitString, awnser);
     }
 
-
-    public void operatorFunction(View v){
-       Button btn = (Button) v;
-        tempString = tempString + btn.getText();
-        e.setText(tempString);
+    public void operatorFunction(View v) {
+       c.operatorFunction(v);
     }
 
     public void calculate(View v) {
-        switch (v.getId()) {
-            case R.id.button18:
-                if(tempString.contains("+")) {
-                    splitString = tempString.split("\\+");
-                     awnser = Float.parseFloat(splitString[0]) + Float.parseFloat(splitString[1]);
-                    e.setText("" + awnser);
-                }
-
-                if(tempString.contains("-")) {
-                    splitString = tempString.split("\\-");
-                     awnser = Float.parseFloat(splitString[0])-Float.parseFloat(splitString[1]);
-                    e.setText(""+awnser);
-                }
-
-                if(tempString.contains("*")) {
-                    splitString = tempString.split("\\*");
-                     awnser = Float.parseFloat(splitString[0])*Float.parseFloat(splitString[1]);
-                    e.setText(""+awnser);
-                }
-
-                if(tempString.contains("/")) {
-                    splitString = tempString.split("/");
-                     awnser = Float.parseFloat(splitString[0])/Float.parseFloat(splitString[1]);
-                    e.setText(""+awnser);
-                }
-
-                break;
-        }
+        c.calculate(v);
     }
 
     public void addNumber(View v) {
-        Button btn = (Button) v;
-        if(e.getText().equals("") || (awnser!=0f)) {
-            e.setText(btn.getText());
-            tempString = ""+e.getText();
-            awnser = 0f;
-        } else {
-            tempString = (""+e.getText()) + (""+btn.getText());
-            e.setText(tempString);
-        }
+        c.addNumber(v);
     }
 
 
     public void clearEntry(View v) {
-        tempString = "";
-        e.setText("");
+        c.clearEntry(v);
+    }
+
+    public void backSpace(View v) {
+        c.backSpace(v);
     }
 }
 
