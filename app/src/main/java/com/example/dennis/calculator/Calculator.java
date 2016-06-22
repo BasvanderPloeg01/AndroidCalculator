@@ -22,33 +22,65 @@ public class Calculator extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.button18:
                 if(tempString.contains("+")) {
+                    if(tempString.contains("\u03c0")){
+                        tempString = tempString.replace("\u03c0","3.14159265359");
+                    }
+
                     splitString = tempString.split("\\+");
                     awnser = Float.parseFloat(splitString[0]) + Float.parseFloat(splitString[1]);
                     e.setText("" + awnser);
                 }
 
                 if(tempString.contains("-")) {
+                    if(tempString.contains("\u03c0")){
+                        tempString = tempString.replace("\u03c0","3.14159265359");
+                    }
+
                     splitString = tempString.split("\\-");
                     awnser = Float.parseFloat(splitString[0])-Float.parseFloat(splitString[1]);
                     e.setText(""+awnser);
                 }
 
                 if(tempString.contains("*")) {
+                    if(tempString.contains("\u03c0")){
+                        tempString = tempString.replace("\u03c0","3.14159265359");
+                    }
+
                     splitString = tempString.split("\\*");
                     awnser = Float.parseFloat(splitString[0])*Float.parseFloat(splitString[1]);
                     e.setText(""+awnser);
                 }
 
                 if(tempString.contains("/")) {
+                    if(tempString.contains("\u03c0")){
+                        tempString = tempString.replace("\u03c0","3.14159265359");
+                    }
+
                     splitString = tempString.split("/");
                     awnser = Float.parseFloat(splitString[0])/Float.parseFloat(splitString[1]);
+                    e.setText(""+awnser);
+                }
+
+                if(tempString.contains("√")) {
+                    tempString = "a" + tempString;
+                    splitString = tempString.split("√");
+                    double awnser = Math.sqrt(Double.parseDouble(splitString[1]));
+                    e.setText(""+awnser);
+                }
+
+                if(tempString.contains("X")) {
+                    if(tempString.contains("\u03c0")){
+                        tempString = tempString.replace("\u03c0","3.14159265359");
+                    }
+
+                    splitString = tempString.split("X");
+                    double awnser = Math.pow(Double.parseDouble(splitString[0]),Double.parseDouble(splitString[1]));
                     e.setText(""+awnser);
                 }
 
                 break;
         }
     }
-
     public void addNumber(View v) {
         Button btn = (Button) v;
         if(e.getText().equals("") || (awnser!=0f)) {
